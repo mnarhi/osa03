@@ -1,5 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
+
 const app = express()
 
 let persons = [
@@ -21,7 +23,9 @@ let persons = [
 ]
 
 app.use(express.json())
+app.use(express.static('dist'))
 app.use(morgan('tiny'))
+app.use(cors())
 
 app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
